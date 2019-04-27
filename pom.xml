@@ -12,14 +12,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <dagger.version>2.11</dagger.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>com.google.dagger</groupId>
       <artifactId>dagger</artifactId>
-      <version>${dagger.version}</version>
+      <version>2.22.1</version>
     </dependency>
   </dependencies>
 
@@ -28,19 +27,20 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
+        <version>3.8.0</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>11</source>
+          <target>11</target>
+          <release>11</release>
           <annotationProcessors>
             <annotationProcessor>dagger.internal.codegen.ComponentProcessor</annotationProcessor>
           </annotationProcessors>
           <annotationProcessorPaths>
-            <annotationProcessorPath>
+            <path>
               <groupId>com.google.dagger</groupId>
               <artifactId>dagger-compiler</artifactId>
-              <version>${dagger.version}</version>
-            </annotationProcessorPath>
+              <version>2.22.1</version>
+            </path>
           </annotationProcessorPaths>
           <parameters>true</parameters>
           <showWarnings>true</showWarnings>
@@ -49,7 +49,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.0.0-M1</version>
+        <version>3.0.0-M2</version>
         <executions>
           <execution>
             <id>enforcer</id>
@@ -64,25 +64,16 @@
               <version>3.3.9</version>
             </requireMavenVersion>
             <requireJavaVersion>
-              <version>1.8</version>
+              <version>11</version>
             </requireJavaVersion>
-            <reactorModuleConvergence/>
             <dependencyConvergence/>
-            <bannedDependencies>
-              <excludes>
-                <exclude>org.slf4j:slf4j-log4j12</exclude>
-                <exclude>org.slf4j:slf4j-jdk14</exclude>
-                <exclude>log4j:log4j</exclude>
-                <exclude>commons-logging:commons-logging</exclude>
-              </excludes>
-            </bannedDependencies>
           </rules>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.2.1</version>
         <configuration>
           <filters>
             <filter>
